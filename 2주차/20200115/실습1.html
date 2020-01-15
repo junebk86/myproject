@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>서울시 미세먼지</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <style>
+		.red {
+			color : red;
+		}	
+
+		.green {
+			color : green;
+		}
+	</style>
+
+	<script>
+		$.ajax({
+			type: "GET",
+			url: "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99",
+			data: {},
+			success: function(response){
+				let mise = response["RealtimeCityAir"]["row"];
+				for (let i = 0 ; i < mise.length; i++) {
+					let gu_name = mise[i]['MSRSTE_NM'];
+					let gu_mise = mise[i]['IDEX_MVL'];
+					
+
+					var color;
+					if (gu_mise < 60) {
+						color = "green";
+					} else {
+						color = "red";
+					}
+					let tag = "<li class=\"" + color + "\">" + gu_name + gu_mise + "</li>"
+					$('#gu-list').append(tag);
+				}
+
+			}
+		})
+	</script>
+</head>
+
+<body>
+	<h1>서울시 미세먼지 농도(구별)</h1>	
+
+	<ul id="gu-list">
+	</ul>
+</body>
+</html>

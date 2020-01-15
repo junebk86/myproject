@@ -46,13 +46,24 @@
     .card-text-2 {
       color: blue;
     }
+
+    #posting-box {
+      display:none;
+    }
   </style>
 
   <script>
-    function hey() {
-      window.location.href="http://www.naver.com"
-      // alert "안녕!"
+    function openclose() {
+      if ( $('#posting-box').css('display') == 'block' ) {
+        $('#posting-box').hide();
+        $('#btn-posting-box').text('포스팅박스 열기')
+      }
+      else {
+        $('#posting-box').show();
+        $('#btn-posting-box').text('포스팅박스 닫기')
+      }  
     }
+
   </script>
 </head>
 
@@ -66,15 +77,15 @@
       <hr class="my-4">
       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
       <p class="lead">
-        <a onclick="hey()" class="btn btn-primary btn-lg" href="#" role="button">포스팅박스 열기</a>
+        <a onclick="openclose()" id="btn-posting-box" class="btn btn-primary btn-lg" href="#">포스팅박스 열기</a>
       </p>
     </div>
 
-    <div class="postingbox">
+    <div id="posting-box" class="postingbox">
 
       <div class="form-group">
         <label for="exampleFormControlTextarea1">아티클 URL</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <input id="posting-url" class="form-control" placeholder="">
       </div>
       
       <div class="form-group">
@@ -89,7 +100,7 @@
 
   
 
-    <div class="card-columns">
+    <div id="cards-box" class="card-columns">
       <div class="card">
         <img class="card-img-top" src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg" alt="Card image cap">
         <div class="card-body">
@@ -183,6 +194,8 @@
     </div>
 
   </div>
+
+  
 
 </body>
 </html>

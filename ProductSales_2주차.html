@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<!-- Webpage Title -->
+	<title>= JUNHO'S MARKET =</title>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+	<style>
+		.wrap {
+			width: 900px;
+			height: 900px;
+			margin: 50px auto;
+		}
+
+		.input-group {
+			margin: 20px auto;
+		}
+	</style>
+
+	<script>
+		function phone_number_test(phone_test) {
+
+			var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+
+			return regExp.test(phone_test);
+		}
+
+		function order_process() {
+
+			let name = $('#order_name').val();
+			let count = $('#order_count').val();
+			let adress = $('#order_adress').val();
+			let phone = $('#order_phone').val();
+
+			if (name == "") {
+				alert("이름을 입력하세요!")
+				$('#order_name').focus();
+			} else if (count == "수량을 선택해주세요.") {
+				alert("수량을 입력하세요!")
+				$('#order_count').focus();
+			} else if (adress == "") {
+				alert("주소을 입력하세요!")
+				$('#order_adress').focus();
+			} else if (phone == "") {
+				alert("전화번호를 입력하세요!");
+				$('#order_phone').focus();
+			} else if (!phone_number_test(phone)) {
+				alert("휴대폰번호의 입력형식이 틀립니다. 010-0000-0000 형식으로 입혁해주세요.");
+			}
+
+			
+
+
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrap">
+
+		<div class="p-img">
+			<img src="http://blogfiles.naver.net/MjAxOTAyMjBfMjcg/MDAxNTUwNjQwNDM3NDgy.fVZ2KxTvdgaPeb5sFdt167IQsqtloRn1HZg-F2CY8AMg.V6XTh4ghhtNbZasDAdCi1iNkU6zlYCUEUiddcEVpNdkg.JPEG.pickydiet/04_brand_2.jpg" alt="My Image">
+		</div>
+
+		<div class="p-title">
+			<span style = " font-size: 1.5em; font-weight: bold;">
+				상품제목
+			</span>
+			<span style = " font-size: 1em;">
+				가격 : 9,900원
+			</span>
+		</div>
+
+		<div class="p-sub">
+			<span style = "font-size:2em;">
+				무설탕 초코잼
+			</span>
+			<span style="font-size:2em; font-weight:bold; font color:brown; background-color:green;">
+				너트비아
+			</span>
+			<p>
+				더 맛있고, 더 달콤하고, 더 건강하게!!
+			</p>
+		</div>
+
+		<div class="order-title">
+			<span style = " font-size: 1.5em; font-weight: bold;">
+				주문하기
+			</span>
+		</div>
+
+		<div class="order-sub">
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
+				</div>
+				<input id="order_name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<label class="input-group-text" for="inputGroupSelect01">수량</label>
+				</div>
+				<select id="order_count" class="custom-select">
+					<option selected>수량을 선택해주세요.</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+				</div>
+				<input id="order_adress" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+				</div>
+				<input id="order_phone" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<a onclick="order_process()" class="btn btn-primary">주문하기</a>
+
+		</div>
+
+	</div>
+</body>
+</html>
